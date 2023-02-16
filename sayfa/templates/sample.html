@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    {% block head %} {% endblock%}
+    <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/jquery.mixitup.min.js'%}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}" />
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.cookie.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+   <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="{% static 'js/jquery.mixitup.min.js' %}"></script>
+    <link href="carousel.css" rel="stylesheet">
+    <style type="text/css">
+
+    html {
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    body{
+        font-family: Microsoft YaHei;
+        background-color:#f8f9fa;
+    }
+    #body .header{
+        background: url('/static/img/bar.jpg') no-repeat;
+    }
+    #nav .mainlevel ul {
+        position: relative;
+        display:none;
+
+    }
+
+    #nav .mainlevel li a {
+        padding: 0 0px;
+        line-height: 10px;
+        height: 15px;
+        display: block ;
+
+        _padding-bottom: 5px;
+        /*IE6 only*/
+    }
+
+    .minHeightContent {
+        min-height: 81%;
+    }
+    .son{
+
+
+    }
+
+.blackUnderWear{
+     background:#ffffff;
+     width: 100%;
+     position: absolute;
+    top: 55px;
+    height: 40px;
+}
+.nav-top {
+    width: 300px;
+    line-height: 0px;
+    position: absolute;
+    top: -4px;
+    right:0%;
+    text-align: right;
+    height: 62px;
+    margin:3px;
+    border-radius:4px;
+
+}
+.nav-top2 {
+    width: 1300px;
+    line-height: 0px;
+    position: absolute;
+    top: 0px;
+    right:00%;
+    text-align: left;
+    height: 30px;
+    margin: 5px;
+
+}
+.container{width: 1800px !important;}
+
+
+    </style>
+    <script type="text/javascript">
+    $(function() {
+        $('.mainlevel').mouseenter(function(event) {
+
+            $('ul.son').each(function  fun(i,item){
+                $(item).css('display','');
+            })
+            $(this).find('ul').css('display','block'); //you can give it a speed
+            event.stopPropagation();
+        });
+         // $('ul.son li').mouseenter(function(event) {
+           //  $(this).css('background','#131824');
+
+         //});
+       // $('li.mainlevel').mouseleave(function() {
+        //  $(this).find('ul').slideUp("fast");
+      //  });
+    });
+    </script>
+    <style type="text/css">
+    body {
+
+    }
+    .minHeightContent {
+
+        background-position: center center;
+        margin-bottom: -20px;
+    }
+    .form-signin {
+        margin: 0 auto;
+        margin-left:700px;
+        width: 200px;
+        max-width: 330px;
+        padding: 15px 0 15px;
+    }
+    .form-signin .form-signin-heading,
+    .form-signin .checkbox {
+        margin-bottom: 10px;
+    }
+
+    .form-signin .checkbox {
+        font-weight: normal;
+    }
+    .form-signin .form-control {
+        box-sizing: border-box;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        position: relative;
+        margin-bottom: 5px;
+
+    }
+    .form-signin .form-control:focus {
+        z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+        border-bottom-left-radius: 4;
+        border-bottom-right-radius: 4;
+        margin-bottom: -1px;
+    }
+
+    .form-signin input[type="password"] {
+        border-top-left-radius: 4;
+        border-top-right-radius: 4;
+        margin-bottom: 10px;
+    }
+</style>
+
+
+</head>
+
+<body>
+ <script type="text/javascript">
+ $(function(){
+    $("#LoginBtn").click(function(event) {
+        /* Act on the event */
+        var Kullanıcıadı=$("#user").val();
+        var parola=$("#pass").val();
+         $.ajax({
+            url: 'http://127.0.0.1:8000',
+            type: 'POST',
+            dataType: 'json',
+            data: {Kullanıcıadı: Kullanıcı_adı,pwd:parola},
+        })
+       .done(function(hahh) {
+             alert("1");
+         })
+        .fail(function(hahah) {
+            alert("2");
+        });
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<!--<div class="üst" style="height:30px;">
+    <div class="column column-brand">
+         <div class="slogan"style="height:8px;left:500px;text-align: center;"><h5>zanaat-i İslam Cemiyeti</h5></div>
+     </div>
+</div>-->
+<div class="header  bg-light" style="background:#fffff;min-width:1000px;height:100px;">
+        <div class="container">
+            <div class="logo" style="margin-top:-10px;height:125px;">
+                <a href="/"><img src="{%static 'img/logo.png' %}" style="margin-top:14px;height:90px;width:90px;margin-left:-90px;" alt=""></a>
+            </div>
+            <div class="navigation " style="font-family:Microsoft YaHei;width:100%">
+                <div class="container">
+                    <script>
+                        function myFunction() {
+                          var x = document.getElementById('pop');
+                          if (x.style.visibility === 'hidden') {
+                            x.style.visibility = 'visible';
+                          } else {
+                            x.style.visibility = 'hidden';
+                          }
+                        }
+                        function Kap() {
+                          var x = document.getElementById('pop');
+                          if (x.style.visibility === 'hidden') {
+                            x.style.visibility = 'visible';
+                          } else {
+                            x.style.visibility = 'hidden';
+                          }
+                        }
+                    </script>
+                    <h3 class="nav-top" style="">
+                    {% if "Kullanıcı_adı" in request.session %}
+                    <a  href="/" class="btn btn-xl" style="color:green;margin-left:-930px;margin-top:15px"><strong>{{ request.session.Kullanıcı_adı }}</strong></a>
+                    <a  href="/cıkıs/" class="btn btn-xl" style="color:black;margin-right:00px;margin-top:15px"><p>Çıkış Yap</p></a>
+                    <img style="margin-right:270px;margin-top:20px;"  width="30px" height="30px" src="{% static 'img/site/profil.png'%}" alt="">
+                     {% else %}
+                      <div class="popup-container" style="display:flex;justify-content:center;">
+                          <!--<button  class="btn" onclick="myFunction()" style="color:#008000;margin-top:10px;margin-right:00px;"><strong style="font-size:16px;">Giriş Yap</strong></button>
+                          <a  href="/kayıt/" class="btn btn-xl" style="color:#008000;margin-right:00px;margin-top:10px"><strong style="font-size:16px;">Üye Ol</strong></a>-->
+                          <img style="margin-right:250px;margin-top:15px;" onclick="myFunction()"  width="30px" height="30px" src="{% static 'img/site/profil.png'%}" alt="">
+                          <div id="pop" class="popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(#000,0.5);z-index:10;opacity:1;visibility:hidden;">
+                              <div class="inner" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;min-width:400px;box-sizing:border-box;padding:20px;border:solid 3px green;border-radius:9px">
+                                    <script type="text/javascript">
+                                        $(function(){
+                                            if({{ info }}){$('#Modal').modal('show');}
+                                        });
+                                    </script>
+                                  <button style="margin-right:300px;margin-top:-20px" onclick="Kap()" class="btn btn-light">x</button>
+                                  <img src="{%static 'img/logo.png' %}"style="width:70px;height:70px;left:0" alt="">
+                                  <form class="form-signin" style="margin-left:80px;margin-top:-60px" action="/giris" method="POST">
+                                    {% csrf_token %}
+                                    <h5  style="color:black;text-align:center;margin-top:5px">Giriş Yap</h5>
+                                    <label class="sr-only" for="inputEmail"></label>
+                                    <input type="text" name="Kullanıcıadı" autofocus="" required="" placeholder="Kullanıcı Adı" class="form-control" id="user">
+                                    <label class="sr-only" for="inputPassword"></label>
+                                    <input type="password" name="pwd" required="" placeholder="parola" class="form-control" id="pass">
+                                    <div class="checkbox" style="color:black;">
+                                        <label>
+                                            <input type="checkbox" id="rmbUser" checked="true" style=""><h6 style="color:black;">Şifre Hatırla</h6>
+                                        </label>
+                                        <a href="#" class="pull-right" style="display:none;">Parolayı Unuttum</a>
+                                    </div>
+                                    <button style="width:48%;background-color:rgba(0,180,50,0.5);display:flex" type="submit" id="LoginBtn" onclick="saveUserInfo()" class="btn"><strong>Giriş yap</strong></button>
+                                    <a style="width:48%;margin-left:100px;background-color:rgba(0,180,50,0.5);display:flex;margin-top:-38px" href="/kayıt" class="btn"><strong>Kayıt Ol</strong></a>
+                                </form>
+                              </div>
+                              <div id='Modal' class="modal fade">
+                              <div  class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Sisteme Giriş Hatası</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Kullanıcı adı veya şifre yanlış&hellip;</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Emin Misiniz</button>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div>
+                               <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        if ($.cookie("rmbUser") == "true") {
+                                            $("#rmbUser").attr("checked", true);
+                                            $("#user").val($.cookie("userName"));
+                                            $("#pass").val($.cookie("passWord"));
+                                        }
+                                    });
+                                    //
+                                    function saveUserInfo() {
+                                        var userName = $("#user").val();
+                                        var passWord = $("#pass").val();
+                                        if ($("#rmbUser").attr("checked") == "checked") {
+
+                                            $.cookie("rmbUser", "true", {
+                                                expires: 7
+                                            }); //
+                                                    7 günlük bir son kullanma tarihi saklayın cookie
+                                            $.cookie("userName", userName, {
+                                                expires: 7
+                                            }); //
+                                                7 günlük bir son kullanma tarihi saklayın cookie
+                                            $.cookie("passWord", passWord, {
+                                                expires: 7
+                                            }); // 7 günlük bir son kullanma tarihi saklayın cookie
+                                        } else {
+                                            $.cookie("rmbUser", "false", {
+                                                expires: -1
+                                            });
+                                            $.cookie("userName", '', {
+                                                expires: -1
+                                            });
+                                            $.cookie("passWord", '', {
+                                                expires: -1
+                                            });
+                                        }
+                                          $.post('http://127.0.0.1:8000/giris', {
+                                            'username': userName,
+                                             'pwd': passWord
+                                         }, function(data) {
+                                             if (data == 1) $.post('/giris', {
+                                                 'username': userName,
+                                                 'state':'1',
+                                                 'csrfmiddlewaretoken': $.cookie('csrftoken')
+                                             });
+                                             else alert('yanlış şifre');
+                                         })
+
+                                    };
+                               </script>
+
+                          </div>
+                      </div>
+                    {% endif %}
+                    </h3>
+                </div>
+                <script>
+                    function borderChange(id, color,scale,style) {
+                      document.getElementById(id).style.borderBottomColor = color;
+                      document.getElementById(id).style.borderRadius = scale;
+                      document.getElementById(id).style.borderBottom = style;
+                    }
+                    function borderOut(id, color) {
+                      document.getElementById(id).style.borderBottom = color;
+                    }
+                </script>
+
+                <div class="nav-top2" style="margin-right:250px;margin-top:59px;">
+                    <a  href="/Sohbetler/" class="btn btn-xl" id="menu1" onmouseout="borderChange(this.id, 'green','1px','transparent');" onmouseover="borderChange(this.id, 'black','18px','solid');" style="color:green;border-bottom:1px transparent rgba(0,0,0,0);border-radius:1px"><strong>SOHBETLER</strong></a>
+                     <a  href="/Ekonomi/" class="btn btn-xl" id="menu2" onmouseout="borderChange(this.id, 'green','1px','transparent');" onmouseover="borderChange(this.id, 'black','18px','solid');" style="color:green;border-bottom:1px transparent rgba(0,0,0,0);border-radius:1px"><strong>EKONOMİ</strong></a>
+                     <a  href="/Teknoloji/" class="btn btn-xl" id="menu3" onmouseout="borderChange(this.id, 'green','1px','transparent');" onmouseover="borderChange(this.id, 'black','18px','solid');" style="color:green;border-bottom:1px transparent rgba(0,0,0,0);border-radius:1px"><strong>TEKNOLOJİ</strong></a>
+                     <a  href="/İslam/" class="btn btn-xl" id="menu4" onmouseout="borderChange(this.id, 'green','1px','transparent');" onmouseover="borderChange(this.id, 'black','12px','solid');" style="color:green;border-bottom:1px transparent rgba(0,0,0,0);border-radius:1px"><strong>İSLAM</strong></a>
+                     <a  href="/Dünya/" class="btn btn-xl" id="menu5" onmouseout="borderChange(this.id, 'green','1px','transparent');" onmouseover="borderChange(this.id, 'black','12px','solid');" style="color:green;border-bottom:1px transparent rgba(0,0,0,0);border-radius:1px"><strong>DÜNYA</strong></a>
+                    <a  href="/Gündelik/" class="btn btn-xl" id="menu6" onmouseout="borderChange(this.id, 'green','1px','transparent');" onmouseover="borderChange(this.id, 'black','12px','solid');" style="color:green;border-bottom:1px transparent rgba(0,0,0,0);border-radius:1px"><strong>GÜNDELİK</strong></a>
+                    <a  href="/OrtaDoğu/" class="btn btn-xl" id="menu7" onmouseout="borderChange(this.id, 'green','1px','transparent');" onmouseover="borderChange(this.id, 'black','12px','solid');" style="color:green;border-bottom:1px transparent rgba(0,0,0,0);border-radius:1px"><strong>ORTADOĞU</strong></a>
+                </div>
+            </div>
+            <div class="navigation" style="font-family:Microsoft YaHei;height:29px">
+                <div class="row">
+                    <div class="col-s-1">
+                      <h2 class="nav" style="margin-top:-23px;margin-left:-350px">
+                       <a href="https://www.instagram.com/mudafaiislamhareketi/"  class="ins"style="right:100px;">
+                          <img src="{%static 'img/insta.png'%}"alt="İnstagram" width="30px"/>
+                       </a>
+                        <a href="https://www.facebook.com/mislamhareketi"  class="face"style="right:100px;">
+                          <img src="{%static 'img/face.png'%}"alt="facebook" width="30px"/>
+                       </a>
+                        <a href="https://mobile.twitter.com/MudafaaHareketi"  class="twit"style="right:100px;">
+                          <img src="{%static 'img/twitter.png'%}"alt="twitter" width="30px"/>
+                       </a>
+                        <a href="https://mobile.twitter.com/MudafaaHareketi"  class="ytb"style="right:100px;">
+                          <img src="{%static 'img/ytb.png'%}"alt="twitter" width="30px"/>
+                       </a>
+                      </h2>
+                    </div>
+                    <nav class="navbar navbar-expand navbar" style="top:-44px;right:200px">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active" >
+                                <a class="nav-link" style="color:#B7AC30"  href="/Hakkımızda">Hakkımızda <span class="sr-only"></span></a>
+                              </li>
+                              <li class="nav-item active">
+                                  <a class="nav-link" style="color:#B7AC30" href="/TarihteBugun">Tarihte Bugün</a>
+                              </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+          <!-- <div style="top:90px;" class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+                    <div class="class="col-md-6 px-0">
+                        <h1 class="display-4 font-italic">Simülasyon Geliştirme Çalışmaları</h1>
+                        <p class="lead my-3">Araç Ve Hava Aracı Simülasyonu Geliştirme Projeleri Devam Ediyor. </p>
+                    </div>
+            </div>-->
+            <hr class="" style="min-width:1700px;margin-top:12px;margin-left:0px;"/>
+            <div class="container bg-success" style="background-color:#00cc00;min-width:1920px;margin-top:36px;margin-left:-300px;height:15px">
+                </div>
+                    <script>
+                    $("span.menu").click(function() {
+                        $(".navigation").slideToggle("slow", function() {
+                            // Animation complete.
+                        });
+                    });
+                    </script>
+                </div>
+            </div>
+     </div>
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <footer class="footer" style="background:#272B2E;padding-bottom:0px;margin-top:400px;font-family:Microsoft YaHei; min-width:1200px;display:block;">
+          <a href="https://wa.me/+905323062297?text=Selamünaleyküm/"  class="whatsapp-chat"style="bottom:05%;left:90%;position:fixed;">
+            <img src="{%static 'img/whatsapp.png'%}"alt="Whatsapp" width="60px"/>
+        </a>
+        <div class="container">
+            <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-4 col-xs-4">
+                    <br/>
+                    <img src="{% static 'img/logo.png' %}" width="70">
+                    <p></p>
+                    <p><i>Mudafaa-i İslam</i> & <i>İstanbul</i></p>
+                </div>
+                 <div class="row">
+                    <div class="col-md">
+                      <h2 class="nav" style="margin-top:-83px;margin-left:500px">
+                       <a href="https://www.instagram.com/mudafaiislamhareketi/"  class="ins"style="right:100px;">
+                          <img src="{%static 'img/insta.png'%}"alt="İnstagram" width="45px"/>
+                       </a>
+                        <a href="https://www.facebook.com/mislamhareketi"  class="face"style="right:100px;">
+                          <img src="{%static 'img/face.png'%}"alt="facebook" width="45px"/>
+                       </a>
+                        <a href="https://mobile.twitter.com/MudafaaHareketi"  class="twit"style="right:100px;">
+                          <img src="{%static 'img/twitter.png'%}"alt="twitter" width="45px"/>
+                       </a>
+                        <a href="https://mobile.twitter.com/MudafaaHareketi"  class="ytb"style="right:100px;">
+                          <img src="{%static 'img/ytb.png'%}"alt="twitter" width="45px"/>
+                       </a>
+                      </h2>
+                    </div>
+                 </div>
+                <div class="col-lg-6 col-xs-6 text-left">
+                    <br/>
+                    <p style="color:#777A7F;margin-bottom:3px;margin-left:3px;" >Mudafaa-i İslam</p>
+                    <p style="margin-left:3px;">
+                        <a href="/Hakkımızda" style="color:#777A7F;">Mudafaa-i İslam Hakkında </a>
+                        <label style="margin-left:3px;margin-right:3px;">|</label>
+                        <a href="/" style="color:#777A7F;">Mudafaa-i İslam katılın </a>
+                        <label style="margin-left:3px;margin-right:3px;">|</label>
+                     <!--   <a href="/" style="color:#777A7F;">zanaat-i İslam Kullanıcı Merkezi </a>
+                        <label style="margin-left:3px;margin-right:3px;">|</label>-->
+                        <a href="https://wa.me/+905323062297?text=Selamünaleyküm/" style="color:#777A7F;">Bize Ulaşın</a>
+                    </p>
+                    <p>Copyright © 2023- 2023 Bütün Haklar Saklıdır.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

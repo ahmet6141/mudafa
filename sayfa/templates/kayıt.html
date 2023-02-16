@@ -1,0 +1,72 @@
+{% extends "sample.html" %} {% block title %} Kayıt - Zanaat Atölyesi{% endblock %} {% block head %}
+<style type="text/css">
+</style>
+{% endblock %} {% block content%}
+<div class="container" style="">
+    <div class="col-mid-12 col-lg-12 col-xs-12" style="margin-top:30px;">
+        <div class="col-mid-2 col-lg-2 col-xs-2">
+        </div>
+       <div id='Modal' class="modal fade">
+    	<div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Henüz Açılmadı</h4>
+            </div>
+            <div class="modal-body">
+                <p>bizi izlemeye devam edin&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Elbette</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    		</div>
+		</div>
+
+        <div class="col-mid-8 col-lg-8 col-xs-8">
+            <p style="font-family:Microsoft YaHei"><strong>Hesabı hızlı bir şekilde kaydedin</strong></p>
+            <p><small style="color:#DADADA">Dikkatli Doldurunuz.</small></p>
+            <form action="/kayıt" method="POST">
+            <div id="regPanel" style="border:1px solid #E0E0E0;margin-top:20px;margin-bottom:50px;border-radius:10px;">{% csrf_token %}
+                <div style="width:70%;margin-top:30px;margin:10px auto;" class="form-group">
+                    <label for="inputEmail">hesap ismi:</label>
+                    <input type="text" name="username" autofocus="" required="" placeholder="hesap ismi" class="form-control" id="user">
+                </div>
+                <div style="width:70%;margin-top:30px;margin:10px auto;" class="form-group">
+                    <label for="inputEmail">parola:</label>
+                    <input type="password" name="psd" autofocus="" required="" placeholder="şifre" class="form-control" id="psd">
+                </div>
+                <div style="width:70%;margin-top:30px;margin:10px auto;" class="form-group">
+                    <label style="font-family:Microsoft YaHei;"><strong></strong></label>
+                    <label class="sr-only" for="inputEmail">Şifreyi Onayla:</label>
+                    <input type="password" name="Cpsd" autofocus="" required="" placeholder="Şifreyi Onayla" class="form-control" id="Cpsd">
+                </div>
+                <div style="width:70%;margin-top:30px;margin:10px auto;" class="form-group">
+                    <label style="font-family:Microsoft YaHei;"><strong></strong></label>
+                    <label class="sr-only" for="inputEmail">E-mail:</label>
+                    <input type="text" name="mail" autofocus="" required="" placeholder="E-mail" class="form-control" id="mail">
+                </div>
+                <div style="width:70%;margin-top:30px;margin:10px auto;" class="form-group">
+                    <label style="font-family:Microsoft YaHei;"><strong>isim:</strong></label>
+                    <label class="sr-only" for="inputEmail">gerçek İsim:</label>
+                    <input type="text" name="Rname" autofocus=""  placeholder="gerçek İsim" class="form-control" id="Rname">
+                </div>
+
+                <div style="width:70%;margin-top:30px;margin:10px auto;" class="form-group">
+                    <label for="vcode">doğrulama kodu:</label>
+                    <div class="input-group">
+                        <input type="text" name="vcode" autofocus=""   placeholder="doğrulama kodu" class="form-control" id="vcode">
+                        <div class="input-group-addon">Doğrulama Kodu</div>
+                    </div>
+                    <div style="width:70%;margin-top:30px;margin:10px auto;margin-left:500px" class="form-group">
+                        <button type="submit" style="height:70%" id="RegBtn" class="btn btn-lg btn-primary btn-block" >Kayıt</button>
+                    </div>
+                </div>
+            </div></form>
+            <div class="col-mid-2 col-lg-2 col-xs-2">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

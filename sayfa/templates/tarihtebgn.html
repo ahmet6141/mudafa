@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "sample.html" %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarihte Bugün</title>
+</head>
+<body>
+{% block content %}
+<div class="container">
+	<div class="row">
+		{% for c in tarihtbugn %}
+	 <div class="col-sm-3">
+		<div class="card" style="width: 18rem;margin-top:80px;margin-left:40px">
+		  <a href="/tarihteBugun/{{c.id}}"> <img class="card-img-top" src="/static/{{ c.Araresim }}" alt="Card image cap"></a>
+		  <div class="card-body">
+			<h5 class="card-title">{{c.Baslik}}</h5>
+			<p class="card-text">Yayınlanma Zamanı：{{c.Yayıntarih |date:"Y-m-d H:i"}}</p>
+			<p class="card-text">{{c.OnYazı}}</p>
+		  </div>
+		</div>
+     </div>
+		{%endfor%}
+	</div>
+  </div>
+</body>
+{% endblock %}
+
+
+
+</html>

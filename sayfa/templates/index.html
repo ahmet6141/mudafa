@@ -1,0 +1,280 @@
+{% extends "sample.html" %} {% block title %}Mudafaa-i İslam{% endblock%}
+{% block head %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <style type="text/css">
+        .hbr {
+            background-color: #FFF;
+        }
+
+        .hbr:hover {
+            background-color: #000;
+        }
+        .carousel-control-prev-icon {
+         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%237ee02d' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+        }
+
+        .carousel-control-next-icon {
+          background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%237ee02d' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+        }
+         .carousel-indicators .active{
+             background-color: #013220;
+         }
+    </style>
+{% endblock %}
+{% load poll_extra %}
+{% load static %}
+{% block content %}
+<script async defer crossorigin="anonymous" src="https://namazvakitleri.com.tr/widget.js"></script>
+<div class="container">
+     <div class="container bg-dark text-white" style="background-color:#00cc00;min-width:1200px;margin-top:48px;margin-left:0px;height:40px">
+                 <h5 style=" position: absolute;left:300px;margin-top:7px;text-decoration: underline;text-decoration-color: red;font-family: 'PT Sans Narrow', sans-serif;">Son Dakika</h5>
+                 <div id="sondakika" class="carousel slide"style="width:900px;height:40px;left:100px;margin-top:-36px" data-bs-ride="carousel" >
+                  <div class="carousel-inner" style="margin-left:100px">
+                    {% for c in sondakikahbrr %}
+                      {%if forloop.counter0 == 0%}
+                        <div class="carousel-item active" style="left:0%">
+                             <a class="btn" href="/sondakika/{{c.id}}"><h3 style="margin-top:-4px;font-family: 'PT Sans Narrow', sans-serif;color:#ffffff">{{ c.Baslik}}</h3></a>
+                        </div>
+                      {%else%}
+                        <div class="carousel-item" style="left:0%">
+                            <a class="btn" href="/sondakika/{{c.id}}"><h3 style="margin-top:-4px;font-family: 'PT Sans Narrow', sans-serif;color:#ffffff">{{ c.Tarih|time:"H:M:S"}}{{ c.Baslik}}</h3></a>
+                        </div>
+                      {%endif%}{% endfor %}
+                   </div>
+                      <button class="carousel-control-prev" data-bs-target="#sondakika" type="button" data-bs-slide="prev"style="margin-left:-5%">
+                        <span class="carousel-control-prev-icon"style="" aria-hidden="true"></span>
+                        <span  style="" class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#sondakika" data-bs-slide="next" style="margin-right:780px" >
+                        <span class="carousel-control-next-icon" style=""aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                 </div>
+            </div>
+    <div class="row" style="margin-top:4px;padding-left:0px;">
+        <div class="col-sm">
+            <div id="myCarousel" class="carousel slide"style="width:900px;height:400px;"  data-bs-ride="carousel" >
+           <!-- <div class="carousel-indicators"style="margin-right:100px">
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>-->
+          <div class="carousel-inner" >
+              {% for c in KayanhbrUstSol %}
+              {% if  forloop.counter == 1  %}
+                <div class="carousel-item active">
+                     <a href="{{ c.LinkAdres }}"> <img style="width:900px;height:400px;" src="{%static c.resim%}" alt="..."></a>
+                    <div class="carousel-caption text-end"style="margin-right:80px">
+
+                    </div>
+                    <div class="carousel-caption d-none d-md-block"style="margin-right:80px">
+
+                    </div>
+                </div>
+                 {% else %}
+               <div class="carousel-item">
+                     <a href="{{ c.LinkAdres }}"> <img style="width:900px;height:400px" src="{%static c.resim%}" alt="..."></a>
+
+                   <div class="carousel-caption d-none d-md-block"style="margin-right:80px">
+                       <h5>{{ c.önyazi}}</h5>
+                   </div>
+               </div>
+                    {%endif%}{% endfor %}
+          </div>
+
+          <button class="carousel-control-prev" data-bs-target="#myCarousel" type="button" data-bs-slide="prev"style="">
+            <span class="carousel-control-prev-icon"style="" aria-hidden="true"></span>
+            <span  style="" class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next" style="" >
+            <span class="carousel-control-next-icon" style="" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        </div>
+        <div class="col-sm" style="padding-left:920px;height:400px;margin-top:-400px;" >
+            <div id="caro" style="width:480px" class="carousel slide" data-ride="carousel" >
+                 <div style="margin-bottom:-25px;margin-left:5px" class="carousel-indicators">
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="3" aria-current="true" aria-label="Slide 4"></button>
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="5" aria-current="true" aria-label="Slide 6"></button>
+                     <button type="button" style="background-color:green;height:15px;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="5" aria-current="true" aria-label="Slide 6"></button>
+                     <button type="button" style="background-color:green;height:15px;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                     <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px" onmouseout="this.style.backgroundColor='green',this.style.color='white'"   onmouseover="this.style.backgroundColor='green',this.style.color='black'" data-bs-target="#caro" data-bs-slide-to="5" aria-current="true" aria-label="Slide 6"></button>
+
+                     <!-- <button style="width:35px;height:35px;border:3px;border-radius:3px" onmouseout="this.style.backgroundColor='green',this.style.color='black'"   onmouseover="this.style.backgroundColor='black',this.style.color='white'" type="button" data-bs-target="#caro" data-bs-slide-to="0" class="active bg-light" aria-current="true" aria-label="Slide 1"><strong style="margin-left:1000px">1</strong></button>
+                     <button style="width:35px;height:35px;background-color:green;border:3px;border-radius:3px" onmouseout="this.style.backgroundColor='green',this.style.color='black'"     onmouseover="this.style.backgroundColor='black',this.style.color='white'" type="button" data-bs-target="#caro" data-bs-slide-to="1" aria-label="Slide 2"><strong style="margin-left:1000px">2</strong></button>
+                     <button style="width:35px;height:35px;background-color:green;border:3px;border-radius:3px" onmouseout="this.style.backgroundColor='green',this.style.color='black'"     onmouseover="this.style.backgroundColor='black',this.style.color='white'" type="button" data-bs-target="#caro" data-bs-slide-to="2" aria-label="Slide 3"><strong style="margin-left:1000px">3</strong></button>
+                     <button style="width:35px;height:35px;background-color:green;border:3px;border-radius:3px" onmouseout="this.style.backgroundColor='green',this.style.color='black'"     onmouseover="this.style.backgroundColor='black',this.style.color='white'" type="button" data-bs-target="#caro" data-bs-slide-to="3" aria-label="Slide 4"><strong style="margin-left:1000px">4</strong></button>
+                     <button style="width:35px;height:35px;background-color:green;border:3px;border-radius:3px" onmouseout="this.style.backgroundColor='green',this.style.color='black'"     onmouseover="this.style.backgroundColor='black',this.style.color='white'" type="button" data-bs-target="#caro" data-bs-slide-to="4" aria-label="Slide 5"><strong style="margin-left:1000px">5</strong></button>
+                     <button style="width:35px;height:35px;background-color:green;border:3px;border-radius:3px" onmouseout="this.style.backgroundColor='green',this.style.color='black'"     onmouseover="this.style.backgroundColor='black',this.style.color='white'" type="button" data-bs-target="#caro" data-bs-slide-to="5" aria-label="Slide 6"><strong style="margin-left:1000px">6</strong></button>
+                     <button style="width:35px;height:35px;background-color:green;border:3px;border-radius:3px" onmouseout="this.style.backgroundColor='green',this.style.color='black'"     onmouseover="this.style.backgroundColor='black',this.style.color='white'" type="button" data-bs-target="#caro" data-bs-slide-to="6" aria-label="Slide 7"><strong style="margin-left:1000px">7</strong></button>
+                     <button style="width:35px;height:35px;background-color:green;border:3px;border-radius:3px" onmouseout="this.style.backgroundColor='green',this.style.color='black'"     onmouseover="this.style.backgroundColor='black',this.style.color='white'" type="button" data-bs-target="#caro" data-bs-slide-to="7" aria-label="Slide 8"><strong style="margin-left:1000px">8</strong></button>
+                     <button style="width:35px;height:35px;background-color:green;border:3px;border-radius:3px" onmouseout="this.style.backgroundColor='green',this.style.color='black'"     onmouseover="this.style.backgroundColor='black',this.style.color='white'" type="button" data-bs-target="#caro" data-bs-slide-to="8" aria-label="Slide 9"><strong style="margin-left:1000px">9</strong></button>-->
+                 </div>
+
+                 <!-- <li style="background-color:rgba(82,139,139,0.6);width:20px;height:16px;border:3px solid transparent;border-radius:3px;border:double 2px transparent;background-image:linear-gradient(22deg,#fffdd0,#717936),linear-gradient(0.1deg,#828282,#171717);background-origin:border-box;background-clip:content-box,border-box;"  data-bs-target="#KayanSekme2" data-bs-slide-to="0" class="active btn_slide" aria-current="true" aria-label="Slide 1"><p style="font-family: 'Times New Roman', Times, serif;font-size: 14px;">1</p></li>
+                  <li style="background-color:rgba(82,139,139,0.6);width:20px;height:16px;border:3px solid transparent;border-radius:3px;border:double 2px transparent;background-image:linear-gradient(22deg,#fffdd0,#009000),linear-gradient(0.1deg,#828282,#171717);background-origin:border-box;background-clip:content-box,border-box;" data-bs-target="#KayanSekme2" class="btn_slide" data-bs-slide-to="1" aria-label="Slide 2"></li>
+                  <li style="background-color:rgba(82,139,139,0.6);width:20px;height:16px;border:3px solid transparent;border-radius:3px;border:double 2px transparent;background-image:linear-gradient(22deg,#fffdd0,#009000),linear-gradient(0.1deg,#828282,#171717);background-origin:border-box;background-clip:content-box,border-box;" data-bs-target="#KayanSekme2" class="btn_slide" data-bs-slide-to="2" aria-label="Slide 3"></li>
+                  <li style="background-color:rgba(82,139,139,0.6);width:20px;height:16px;border:3px solid transparent;border-radius:3px;border:double 2px transparent;background-image:linear-gradient(22deg,#fffdd0,#009000),linear-gradient(0.1deg,#828282,#171717);background-origin:border-box;background-clip:content-box,border-box;" data-bs-target="#KayanSekme2" class="btn_slide" data-bs-slide-to="3" aria-label="Slide 4"></li>
+                  <li style="background-color:rgba(82,139,139,0.6);width:20px;height:16px;border:3px solid transparent;border-radius:3px;border:double 2px transparent;background-image:linear-gradient(22deg,#fffdd0,#009000),linear-gradient(0.1deg,#00cc00,#171717);background-origin:border-box;background-clip:content-box,border-box;" data-bs-target="#KayanSekme2" class="btn_slide" data-bs-slide-to="4" aria-label="Slide 5"></li>
+                  <li style="background-color:rgba(82,139,139,0.6);width:20px;height:16px;border:3px solid transparent;border-radius:3px;border:double 2px transparent;background-image:linear-gradient(22deg,#fffdd0,#009000),linear-gradient(0.1deg,#00cc00,#171717);background-origin:border-box;background-clip:content-box,border-box;" data-bs-target="#KayanSekme2" class="btn_slide" data-bs-slide-to="5" aria-label="Slide 6"></li>
+                    style="background-color:black;font-size:14px;width:38px;height:18px;border-radius:10%; border: 2px solid black;color:#fff;text-indent:0;text-align:center;line-height:30px"-->
+          <div class="carousel-inner" >
+              {% for c in KayanhbrUstSag %}
+              {% if  forloop.counter == 1  %}
+                <div class="carousel-item active">
+                     <a href="{{ c.LinkAdres }}"> <img style="width:413px;height:400px;" src="{%static c.resim%}" alt="..."></a>
+                     <!--<div class="carousel-caption d-none d-md-block"style="">
+                        <h5 style="background-color:rgba(0,0,0,0.3);border-bottom: thick double #00cc00;;text-align:center;margin-bottom:5px;"><font face="Trirong" size="5" color="#363640"><b>{{ c.Baslik}}</b></font></h5>
+                    </div>-->
+                </div>
+                 {% else %}
+               <div class="carousel-item">
+                     <a href="{{ c.LinkAdres }}"> <img style="width:413px;height:400px;" src="{%static c.resim%}" alt="..."></a>
+
+                   <!--<div class="carousel-caption d-none d-md-block"style="">
+                       <p><font face="Trirong" size="5" color="#363640"><b>{{ c.önyazi}}</b></font></p>
+                   </div>-->
+               </div>
+                    {%endif%}{% endfor %}
+          </div>
+
+
+            <!--
+          <button class="carousel-control-prev" data-bs-target="#KayanSekme2" type="button" data-bs-slide="prev"style="">
+            <span class="carousel-control-prev-icon"style="background-color:rgba(0, 204, 0, 0.5)" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#KayanSekme2" data-bs-slide="next" style="margin" >
+            <span class="carousel-control-next-icon" style="background-color:rgba(0, 204, 0, 0.5)"aria-hidden="true"></span>
+            <span class="visually-hidden" >Next</span>
+          </button>-->
+        </div>
+
+        </div>
+    </div>
+</div>
+<div class="container bg-success" style="width:100%;height:150px;margin-top:40px;background-color:green;margin-left:280px;" >
+    <div class="row">
+         <div style="margin-top:10px;margin-left:30px" class="col-sm-1">
+            <div style="margin-left:0;margin-top:-0;" class="nv-widget" data-lang="tr" data-search="all" data-cityId="5041" data-countdown="true" data-prayerTimes="disabled" data-width="150"></div>
+          </div>
+         <div style="margin-top:20px;margin-left:55px" class="col-sm-10">
+              <a class="weatherwidget-io" href="https://forecast7.com/tr/41d0128d98/istanbul/" data-label_1="İSTANBUL" data-label_2="Hava Durumu" data-icons="Climacons" data-mode="Forecast" data-theme="hexellence" >İSTANBUL Hava Durumu</a>
+            <script>
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+            </script>
+         </div>
+    </div>
+<div class="container"style="margin-left:-25px;margin-top:-170px">
+    <div style="" class="row">
+        <div style="" class="col-sm-1">
+                <a href="Haberler"><img style="" src="/static/img/AnasayfaHaberler.png"></a>
+        </div>
+        <div class="col-sm-3">
+                <div  style="background-color:#272B2E;width:600px;height:360px;margin-right:0px;margin-top:0px;margin-left:50px;">
+                      <div id="New" class="carousel slide" data-bs-ride="carousel"style="" >
+                          <div class="carousel-indicators">
+                               <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px"  data-bs-target="#New" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                               <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px"  data-bs-target="#New" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                               <button type="button" style="height:15px;background-color:green;border:2px;border-radius:2px"  data-bs-target="#New" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                          </div>
+                          <div class="carousel-inner">
+                          {% for new in news %}
+                               <div class="carousel-item active">
+                                   <a href="/haberler/{{new.id}}"> <img style="width:600px;height:360px;" src="{%static new.anasayfa_resm%}" alt="..."></a>
+                                   <div class="carousel-caption d-none d-md-block"style="margin-right:80px">
+                                       <span style="text-align:left;color:#fff;margin-top:0px;margin-bottom:0px;">
+                                           <a href="/haberler/{{new.id}}" style="color:#000;">{{new.newsTitle|NewsFilter:20}}</a>
+                                       </span>
+                                        <span style="float:right;" align="right">
+                                           <h5 style="color:#000;">{{ new.dimDate|date:"m/d"}}</h5>
+                                       </span>
+                                   </div>
+                               </div>
+                           {% endfor %}
+                          </div>
+                           <button class="carousel-control-prev" data-bs-target="#New" type="button" data-bs-slide="prev"style="margin-left:-30px;">
+                            <span class="carousel-control-prev-icon"style="" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#New" data-bs-slide="next" style="margin-right:-20px;" >
+                            <span  class="carousel-control-next-icon" style=""aria-hidden="true"></span>
+                            <span  class="visually-hidden" >Next</span>
+                          </button>
+                      </div>
+                </div>
+        </div>
+        <div class="col-sm-3" style="margin-left:80px;">
+               <div  style="background-color:#272B2E;width:400px;height:360px;margin-right:0px;margin-left:300px">
+                   <div id="Ortadoğu"  class="carousel slide" data-bs-ride="carousel"style="" >
+                       <div style="margin-bottom:-360px" class="carousel-indicators">
+                           <button type="button" data-bs-target="#Ortadoğu" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                           <button type="button" data-bs-target="#Ortadoğu" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                           <button type="button" data-bs-target="#Ortadoğu" data-bs-slide-to="3" aria-label="Slide 3"></button>
+                       </div>
+                       <div class="carousel-inner">
+                           {% for new in news %}
+                           {% if new.HaberTur == 'OrtaDoğu' %}
+                           <div class="carousel-item active">
+                               <a href="/haberler/{{new.id}}"> <img style="width:600px;height:360px;border-radius:13px" src="{%static new.anasayfa_resm%}" alt="..."></a>
+                               <div class="carousel-caption d-none d-md-block"style="margin-right:80px">
+                                   <span style="text-align:left;color:#fff;margin-top:0px;margin-bottom:0px;">
+                                       <a href="/haberler/{{new.id}}" style="color:#000;">{{new.newsTitle|NewsFilter:20}}</a>
+                                   </span>
+                                   <span style="float:right;" align="right">
+                                       <h5 style="color:#000;">{{ new.dimDate|date:"m/d"}}</h5>
+                                   </span>
+                               </div>
+                           </div>
+                           {%endif%}{% endfor %}
+                       </div>
+                       <button class="carousel-control-prev" data-bs-target="#Ortadoğu" type="button" data-bs-slide="prev"style="margin-right:0px; margin-bottom:-360px"><span class="carousel-control-prev-icon"style="" aria-hidden="true"></span>
+                           <span class="visually-hidden">Previous</span>
+                       </button>
+                       <button class="carousel-control-next" type="button" data-bs-target="#Ortadoğu" data-bs-slide="next" style="margin-right:00px; margin-bottom:-360px   " >
+                           <span  class="carousel-control-next-icon" style=""aria-hidden="true"></span>
+                           <span  class="visually-hidden" >Next</span>
+                       </button>
+                   </div>
+               </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+        $(function  () {
+           $('.btn-outline-inverse').hover(function() {
+               $(this).css({
+               "border-color": "#3171B8",
+            "color": "#3171B8"
+           });
+           }, function() {
+               $(this).css({
+               "border-color": "#000",
+            "color": "#000"
+           });/* Stuff to do when the mouse leaves the element */
+           });
+        });
+        $(function  () {
+           $('.btn-outline-inverse').hover(function() {
+               $(this).css({
+               "border-color": "#3171B8",
+            "color": "#3171B8"
+           });
+           }, function() {
+               $(this).css({
+               "border-color": "#000",
+            "color": "#000"
+           });/* Stuff to do when the mouse leaves the element */
+           });
+        });
+    </script>
+</div>
+    {% endblock %}

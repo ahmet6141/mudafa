@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "sample.html" %}
+    {% load static %}
+    {% block head %}
+    {% endblock %}
+    <meta charset="UTF-8">
+    <title>Teknoloji Haberleri</title>
+</head>
+<body>
+{% block content %}
+
+    <div class="row" style="margin-left:160px;">
+         {% for hbr in hbr %}
+            <div class="col-sm-3" style="margin-left:60px;width:21rem;margin-top:30px;">
+                <a href="/haberler/{{hbr.id}}"><img class="card-img-top" style="width:21rem" height="200px" src="{%static hbr.anasayfa_resm%}" alt="Card image cap"></a>
+                <div class="card-body" style="width:21rem;background-color:rgba(0,168,107,0.2);height:40px;text-align:center">
+                    <strong class="card-title"><p style="font-size:20px">{{ hbr.Baslık }}</p></strong>
+                </div>
+            </div>
+         {% endfor %}
+    </div>
+
+
+    {% endblock %}
+
+{% block footer %}
+{% endblock %}
+</body>
+</html>

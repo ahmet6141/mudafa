@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+{%load static%}
+ Müdafaa-i İslam Yönetici Panel
+
+{% block branding %}
+<div class="row">
+ <div class="container">
+  <img width="8%" style="margin-top:4px" src="{%static 'img/logo.png' %}" alt="">
+  <h3 style="margin-top:-60px;margin-left:110px" id="site-name"><a style="color:#00cc00;" href="{% url 'admin:index' %}">Müdafaa-i İslam Hareketi</a></h3>
+</div>
+
+</div>
+
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

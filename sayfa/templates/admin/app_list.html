@@ -1,0 +1,42 @@
+{% load i18n %}
+{% if app_list %}
+  {% for app in app_list %}
+    <div style="background-color:#fff;"  class="app-{{ app.app_label }} module{% if app.app_url in request.path|urlencode %} current-app{% endif %}">
+      <table >
+        <div class="container bg-dark">
+          <strong style="">
+          <a style="color:white;margin-top:-40px" href="{{ app.app_url }}" class="section" title="app.name Models in the {{ name }} application">{{ app.name }}</a>
+          </strong>
+        </div>
+
+        {% for model in app.models %}
+          <tr class="model-{{ model.object_name|lower }}{% if model.admin_url in request.path|urlencode %} current-model{% endif %}">
+            {% if model.admin_url %}
+              <th scope="row"><a style="color:black" href="{{ model.admin_url }}"{% if model.admin_url in request.path|urlencode %} aria-current="page"{% endif %}>{{ model.name }}</a></th>
+            {% else %}
+              <th style="color:black" scope="row">{{ model.name }}</th>
+            {% endif %}
+
+            {% if model.add_url %}
+              <td><a href="{{ model.add_url }}" class="addlink">Ekle</a></td>
+            {% else %}
+              <td></td>
+            {% endif %}
+
+            {% if model.admin_url and show_changelinks %}
+              {% if model.view_only %}
+                <td><a href="{{ model.admin_url }}" class="viewlink">İncele</a></td>
+              {% else %}
+                <td><a href="{{ model.admin_url }}" class="changelink">Değiştir</a></td>
+              {% endif %}
+            {% elif show_changelinks %}
+              <td></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>Görmeye veya Düzenlemeye Yetkiniz Yok</p>
+{% endif %}
