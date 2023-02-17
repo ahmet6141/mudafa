@@ -27,8 +27,8 @@ def Base(request):
     news = Haberler.objects.all()[0:7]
     #news=news[1:7]
 
-    context={'KayanhbrUstSol': KayanhbrUstSol,'news':news,'KayanhbrUstSag':KayanhbrUstSag,'sondakikahbrr':sondakikahbrr}
-    return render(request, "index.html",context)
+    #context={'KayanhbrUstSol': KayanhbrUstSol,'news':news,'KayanhbrUstSag':KayanhbrUstSag,'sondakikahbrr':sondakikahbrr}
+    return render(request, "index.html",locals())
 PageCount = 8
 PAGERLEN = 8
 
